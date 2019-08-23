@@ -3,9 +3,9 @@ package funcs
 import (
 	"github.com/cihub/seelog"
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/smartping/smartping/src/g"
-	"github.com/smartping/smartping/src/nettools"
 	"net"
+	"smartping/src/g"
+	"smartping/src/nettools"
 	"strconv"
 	"sync"
 	"time"

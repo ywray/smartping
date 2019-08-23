@@ -8,8 +8,6 @@ github.com/jakecoffman/cron v0.0.0-20190106200828-7e2009c226a5 h1:kCvm3G3u+eTRbj
 github.com/jakecoffman/cron v0.0.0-20190106200828-7e2009c226a5/go.mod h1:6DM2KNNK69jRu0lAHmYK9LYxmqpNjYHOaNp/ZxttD4U=
 github.com/mattn/go-sqlite3 v1.11.0 h1:LDdKkqtYlom37fkvqs8rMPFKAMe8+SgjbwZ6ex1/A/Q=
 github.com/mattn/go-sqlite3 v1.11.0/go.mod h1:FPy6KqzDD04eiIsT53CuJW3U88zkxoIYsOqkbpncsNc=
-github.com/smartping/smartping v0.8.0 h1:aDBIsfgiYR3gISThUGceIkmyJjhiDmwU8eYz9Dg3Ias=
-github.com/smartping/smartping v0.8.0/go.mod h1:Y4nwBCNTAKVoSmgGcyxSeOf8vu3padwbanIfmaqCxOY=
 github.com/wcharczuk/go-chart v2.0.1+incompatible h1:0pz39ZAycJFF7ju/1mepnk26RLVLBCWz1STcD3doU0A=
 github.com/wcharczuk/go-chart v2.0.1+incompatible/go.mod h1:PF5tmL4EIx/7Wf+hEkpCqYi5He4u90sw+0+6FhrryuE=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
