@@ -26,7 +26,7 @@ func main() {
 	g.ParseConfig(Version)
 	go funcs.ClearArchive()
 	c := cron.New()
-	c.AddFunc("*/60 * * * * *", func() {
+	c.AddFunc("0 */10 * * * *", func() {
 		go funcs.Ping()
 		go funcs.Mapping()
 		if g.Cfg.Mode["Type"] == "cloud" {
