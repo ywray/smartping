@@ -3,17 +3,22 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/jakecoffman/cron"
+	"os"
+	"runtime"
 	"smartping/src/funcs"
 	"smartping/src/g"
 	"smartping/src/http"
-	"os"
-	"runtime"
+	"time"
+
+	"github.com/jakecoffman/cron"
 	//"sync"
 )
 
 // Init config
 var Version = "0.8.0"
+
+// UpdateConfigFromFileFrequency 定时 load config.json 的频率（秒）
+const UpdateConfigFromFileFrequency = 30
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
@@ -24,6 +29,17 @@ func main() {
 		os.Exit(0)
 	}
 	g.ParseConfig(Version)
+
+	tick := time.Tick(time.Duration(UpdateConfigFromFileFrequency) * time.Second)
+	go func() {
+		for {
+			select {
+			case <-tick:
+				g.UpDateConfigFromFile()
+			}
+		}
+	}()
+
 	go funcs.ClearArchive()
 	c := cron.New()
 	c.AddFunc("*/60 * * * * *", func() {

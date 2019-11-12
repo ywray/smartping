@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"database/sql"
 	"encoding/json"
-	"github.com/cihub/seelog"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -14,6 +14,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/cihub/seelog"
 )
 
 var (
@@ -49,6 +51,14 @@ func ReadConfig(filename string) Config {
 	return config
 }
 
+func UpDateConfigFromFile() {
+	cfile := "config.json"
+	DLock.Lock()
+	Cfg = ReadConfig(Root + "/conf/" + cfile)
+	SelfCfg = Cfg.Network[Cfg.Addr]
+	DLock.Unlock()
+	fmt.Println("--- load config succeed, ", time.Now().String())
+}
 func GetRoot() string {
 	//return "D:\\gopath\\src\\github.com\\smartping\\smartping"
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))

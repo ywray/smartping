@@ -4,19 +4,20 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/cihub/seelog"
-	"smartping/src/funcs"
-	"smartping/src/g"
-	"smartping/src/nettools"
-	"github.com/wcharczuk/go-chart"
-	"github.com/wcharczuk/go-chart/drawing"
 	"io/ioutil"
 	"net"
 	"net/http"
+	"smartping/src/funcs"
+	"smartping/src/g"
+	"smartping/src/nettools"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/cihub/seelog"
+	chart "github.com/wcharczuk/go-chart"
+	"github.com/wcharczuk/go-chart/drawing"
 )
 
 func configApiRoutes() {
@@ -499,8 +500,10 @@ func configApiRoutes() {
 		if nconfig.Alert["SendEmailPassword"] == "samepasswordasbefore" {
 			nconfig.Alert["SendEmailPassword"] = g.Cfg.Alert["SendEmailPassword"]
 		}
+		g.DLock.Lock()
 		g.Cfg = nconfig
 		g.SelfCfg = g.Cfg.Network[g.Cfg.Addr]
+		g.DLock.Unlock()
 		saveerr := g.SaveConfig()
 		if saveerr != nil {
 			preout["info"] = saveerr.Error()
